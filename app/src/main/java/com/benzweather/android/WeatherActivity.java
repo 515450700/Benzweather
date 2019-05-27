@@ -1,5 +1,6 @@
 package com.benzweather.android;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 
 import com.benzweather.android.gson.Forecast;
 import com.benzweather.android.gson.Weather;
+import com.benzweather.android.service.AutoUpdateService;
 import com.benzweather.android.util.HttpUtil;
 import com.benzweather.android.util.Utility;
 import com.bumptech.glide.Glide;
@@ -221,5 +223,7 @@ public class WeatherActivity extends AppCompatActivity {
         carWashText.setText(carWash);
         sportText.setText(sport);
         weatherLayout.setVisibility(View.VISIBLE);
+        Intent intent = new Intent(this, AutoUpdateService.class);
+        startService(intent);
     }
 }
